@@ -41,7 +41,8 @@ def dbName = 'jenkins'
     }
 
     stage('Docker Image') {
-        echo 
+        echo ${dockerCredentialId}
+        echo ${dockerRegistry}
         withDockerRegistry([credentialsId: dockerCredentialId, url: "http://${dockerRegistry}"]) {
             dir('target') {
                 sh """
