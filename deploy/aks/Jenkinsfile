@@ -1,6 +1,6 @@
 node('master') {
 
-def servicePrincipalId = 'Jenkins_Azure_Resources'
+def servicePrincipalId = 'Jenkins_Connection'
 def resourceGroup = 'RG-ZAN-Dev'
 def aks = 'RG-ZAN-Dev-Jenkins-Cluster'
 
