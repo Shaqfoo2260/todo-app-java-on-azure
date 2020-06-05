@@ -8,10 +8,10 @@ def cosmosResourceGroup = 'RG-ZAN-Dev'
 def cosmosDbName = 'jenkinscosmosdb'
 def dbName = 'jenkins'
 
-    def dockerRegistry = 'RGZANJenkinsRegistry.azurecr.io'
+    def dockerRegistry = 'rgzanjenkinsregistry.azurecr.io'
     def imageName = "todo-app:${env.BUILD_NUMBER}"
     env.IMAGE_TAG = "${dockerRegistry}/${imageName}"
-    def dockerCredentialId = 'CJpIZUF1D2HZtvF+4UvnBYOyYeGsKs4z'
+    def dockerCredentialId = 'RGZANJenkinsRegistry'
 
     def currentEnvironment = 'blue'
     def newEnvironment = { ->
@@ -41,6 +41,7 @@ def dbName = 'jenkins'
     }
 
     stage('Docker Image') {
+        echo 
         withDockerRegistry([credentialsId: dockerCredentialId, url: "http://${dockerRegistry}"]) {
             dir('target') {
                 sh """
