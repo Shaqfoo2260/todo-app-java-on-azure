@@ -13,9 +13,9 @@ def dbName = 'jenkins'
     env.IMAGE_TAG = "${dockerRegistry}/${imageName}"
     def dockerCredentialId = 'RGZANJenkinsRegistry'
 
-    def currentEnvironment = 'green'
+    def currentEnvironment = 'blue'
     def newEnvironment = { ->
-        currentEnvironment == 'green' ? 'blue' : 'green'
+        currentEnvironment == 'blue' ? 'green' : 'blue'
     }
 
     stage('SCM') {
