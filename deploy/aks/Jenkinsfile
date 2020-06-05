@@ -15,7 +15,7 @@ def dbName = 'jenkins'
 
     def currentEnvironment = 'green'
     def newEnvironment = { ->
-        currentEnvironment == 'blue' ? 'green' : 'blue'
+        currentEnvironment == 'green' ? 'blue' : 'green'
     }
 
     stage('SCM') {
