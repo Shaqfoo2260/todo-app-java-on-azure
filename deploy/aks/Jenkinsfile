@@ -75,6 +75,7 @@ def dbName = 'jenkins'
 
         // parse the current active backend
         currentEnvironment = readFile('current-environment').trim()
+        echo "${currentEnvironment}"
 
         // set the build name
         echo "***************************  CURRENT: $currentEnvironment     NEW: ${newEnvironment()}  *****************************"
@@ -82,11 +83,11 @@ def dbName = 'jenkins'
         echo "${currentBuild.displayName}"
         env.TARGET_ROLE = newEnvironment()
         // clean the inactive environment
-        
+        // kubectl --kubeconfig=kubeconfig delete deployment "todoapp-deployment-\$TARGET_ROLE"
         sh """
         kubectl config view
         kubectl get deployment
-        kubectl --kubeconfig=kubeconfig delete deployment "todoapp-deployment-\$TARGET_ROLE"
+       
         """
 
        
