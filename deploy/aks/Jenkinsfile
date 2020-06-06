@@ -85,11 +85,12 @@ def dbName = 'jenkins'
         // clean the inactive environment
         // kubectl --kubeconfig=kubeconfig delete deployment "todoapp-deployment-\$TARGET_ROLE"
         sh """
-        DEPLOYMENT = sh (
-          		script: 'cat deploy/aks/deployment.yml | yq -r .metadata.name',
-          		returnStdout: true
-        	).trim()
-        echo "${DEPLOYMENT}"      
+        
+         current_eployment= kubectl --kubeconfig=kubeconfig delete deployment "todoapp-deployment-\$TARGET_ROLE"
+         if [ "\$current_deployment" = null ]; then
+                  echo "Unable to determine current deploymnent"
+                  exit 1
+              fi
         """
 
        
