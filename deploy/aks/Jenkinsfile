@@ -40,19 +40,19 @@ def dbName = 'jenkins'
         }
     }
 
-   // stage('Docker Image') {
-   //     echo "${dockerCredentialId}"
-    //    echo "${dockerRegistry}"
-    //    withDockerRegistry([credentialsId: dockerCredentialId, url: "http://${dockerRegistry}"]) {
-    //        dir('target') {
-     //           sh """
-     //               cp -f ../deploy/aks/Dockerfile .
-     //               docker build -t "${env.IMAGE_TAG}" .
-     //               docker push "${env.IMAGE_TAG}"
-     //           """
-     //       }
-     //   }
-   // }
+   stage('Docker Image') {
+        echo "${dockerCredentialId}"
+        echo "${dockerRegistry}"
+        withDockerRegistry([credentialsId: dockerCredentialId, url: "http://${dockerRegistry}"]) {
+            dir('target') {
+                sh """
+                    cp -f ../deploy/aks/Dockerfile .
+                    docker build -t "${env.IMAGE_TAG}" .
+                    docker push "${env.IMAGE_TAG}"
+                """
+            }
+       }
+    }
 
     stage('Check Env') {
         // check the current active environment to determine the inactive one that will be deployed to
@@ -86,14 +86,10 @@ def dbName = 'jenkins'
        sh """
               kubectl --kubeconfig=kubeconfig delete deployment "todoapp-deployment-\$TARGET_ROLE"
         	  """
-        // kubectl --kubeconfig=kubeconfig delete deployment "todoapp-deployment-\$TARGET_ROLE"
+        
        
         
-        // current_deployment= kubectl --kubeconfig=kubeconfig delete deployment "todoapp-deployment-\$TARGET_ROLE"
-         //if [ "\$current_deployment" = null ]; then
-           //       echo "Unable to determine current deploymnent"
-                  
-            //  fi
+        
          
       
 
