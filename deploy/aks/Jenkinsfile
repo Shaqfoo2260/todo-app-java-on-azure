@@ -86,7 +86,7 @@ def dbName = 'jenkins'
        sh """
           current_deployment="\$(cat deploy/aks/deployment.yml)"
           if [ "\$current_deployment" != null ]; then
-          echo "\$current_deployment"
+          echo "${TARGET_ROLE}"
           fi
           
         	  """
