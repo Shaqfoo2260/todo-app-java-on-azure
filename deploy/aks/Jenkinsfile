@@ -79,7 +79,7 @@ def dbName = 'jenkins'
         // set the build name
         echo "***************************  CURRENT: $currentEnvironment     NEW: ${newEnvironment()}  *****************************"
         currentBuild.displayName = newEnvironment().toUpperCase() + ' ' + imageName
-
+        echo "${currentBuild.displayName}"
         env.TARGET_ROLE = newEnvironment()
 
        
