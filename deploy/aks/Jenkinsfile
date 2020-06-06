@@ -84,11 +84,7 @@ def dbName = 'jenkins'
         env.TARGET_ROLE = newEnvironment()
         // clean the inactive environment
        sh """
-          current_deployment="\$(cat deploy/aks/deployment.yml)"
-          if [ "\$current_deployment" != null ]; then
-          echo "${TARGET_ROLE}"
-          fi
-          
+              kubectl --kubeconfig=kubeconfig delete deployment "todoapp-deployment-\$TARGET_ROLE"
         	  """
         // kubectl --kubeconfig=kubeconfig delete deployment "todoapp-deployment-\$TARGET_ROLE"
        
