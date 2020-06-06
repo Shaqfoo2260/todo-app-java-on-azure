@@ -4,7 +4,7 @@ def servicePrincipalId = 'Jenkins_Connection'
 def resourceGroup = 'RG-ZAN-Dev'
 def aks = 'RG-ZAN-Dev-Jenkins-Cluster'
 
-def cosmosResourceGroup = 'RG-ZAN-Dev'
+def cosmosResourceGroup = 'RG-ZAN-Test'
 def cosmosDbName = 'jenkinscosmosdb'
 def dbName = 'jenkins'
 
