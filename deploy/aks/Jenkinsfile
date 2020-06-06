@@ -84,7 +84,7 @@ def dbName = 'jenkins'
         env.TARGET_ROLE = newEnvironment()
         // clean the inactive environment
        sh """
-          current_deployment cat deploy/aks/deployment.yml | grep role
+          current_deployment="\$(cat deploy/aks/deployment.yml | grep role)"
           echo "${current_deployment}"
           
         	  """
