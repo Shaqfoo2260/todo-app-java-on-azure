@@ -86,8 +86,7 @@ def dbName = 'jenkins'
         // kubectl --kubeconfig=kubeconfig delete deployment "todoapp-deployment-\$TARGET_ROLE"
         sh """
         kubectl config view
-        kubectl get deployment
-       
+        kubectl get deployments --all-namespaces       
         """
 
        
