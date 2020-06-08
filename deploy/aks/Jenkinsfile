@@ -1,6 +1,6 @@
 node('master') {
 
-def servicePrincipalId = 'Jenkins_Kubernetes_Accoun'
+def servicePrincipalId = 'Jenkins_Kubernetes_Account'
 def resourceGroup = 'RG-ZAN-Dev'
 def aks = 'RG-ZAN-Dev-Jenkins-Cluster'
 
