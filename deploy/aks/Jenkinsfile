@@ -84,8 +84,11 @@ def dbName = 'todoapp'
         env.TARGET_ROLE = newEnvironment()
         // clean the inactive environment
        sh """
-           //   kubectl --kubeconfig=kubeconfig delete deployment "todoapp-deployment-\$TARGET_ROLE"
-        	  """
+            if [[ -d "/var/lib/jenkins/workspace/Todoapp@tmp/todoapp-deployment" ]] ; then
+              kubectl --kubeconfig=kubeconfig delete deployment "todoapp-deployment-\$TARGET_ROLE"
+        	fi
+              
+              """
         
        
         
